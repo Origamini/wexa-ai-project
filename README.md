@@ -1,4 +1,4 @@
-Creating the sample nextjs app with the following command
+## Creating the sample nextjs app with the following command
 
 `npx create-next-js wexa-ai-project`
 
