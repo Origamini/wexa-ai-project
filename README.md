@@ -14,4 +14,4 @@ then we will launch and ec2 instance and install docker, minikube.
 
 we will create secrets with the kuberetes command and use it while deploying the app with the deployment.yaml file and the service.yaml.
 
-** Please note that I will still writing the readme file to explain my project I would require somemore time till 24 to 48 hours. thank you.
+## Please note that I will still writing the readme file to explain my project I would require somemore time till 24 to 48 hours. thank you.
