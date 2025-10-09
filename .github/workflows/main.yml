@@ -1,46 +1,31 @@
-name: Docker image CI for GHCR
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
-<<<<<<< HEAD
-      - main   # (optional) triggers only on main branch pushes
-=======
       - main
->>>>>>> 07b4b5f7049113c59a73a88962e5d9f08ac890b9
 
 jobs:
-  build_and_publish:
+  build-and-push:
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
-<<<<<<< HEAD
-      packages: write    # required for pushing to GHCR
-=======
-      packages: write  # Required for GHCR push
->>>>>>> 07b4b5f7049113c59a73a88962e5d9f08ac890b9
+      packages: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Log in to GitHub Container Registry
-<<<<<<< HEAD
+      - name: Log in to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build . -t ghcr.io/${{ github.repository_owner }}/nextjs-dummy:latest
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/nextjs-demo
+          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:${{ github.run_number }} .
 
-      - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/nextjs-dummy:latest
-
-=======
-        run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u origamini --password-stdin
-
-      - name: Build Docker image
-        run: docker build . -t ghcr.io/kavitha351/nextjs-dummy:latest
-
-      - name: Push Docker image
-        run: docker push ghcr.io/kavitha351/nextjs-dummy:latest
->>>>>>> 07b4b5f7049113c59a73a88962e5d9f08ac890b9
+      - name: Push image to GHCR
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/nextjs-demo
+          docker push $IMAGE_NAME --all-tags
