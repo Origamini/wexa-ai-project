@@ -47,6 +47,10 @@ Then we will pull the image from the package created in public GHRC
 
 `docker pull ghcr.io/kavitha351/nextjs-dummy:latest`
 
+Note: while starting the minikube if you see the error like "X Docker is nearly out of disk space, which may cause deployments to fail! (88% of capacity). You can pass '--force' to skip this check." run the below command to remove the current images and free up space from docker
+
+`docker system prune -a`
+
 Start the minikube with the command `minikube start`
 
 then we can make a folder called k8s and create deployment.yaml and service.yaml. Copy the files of `/k8s`
