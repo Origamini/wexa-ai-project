@@ -47,6 +47,8 @@ Then we will pull the image from the package created in public GHRC
 
 `docker pull ghcr.io/kavitha351/nextjs-dummy:latest`
 
+Start the minikube with the command `minikube start`
+
 then we can make a folder called k8s and create deployment.yaml and service.yaml. Copy the files of `/k8s`
 
 Then we can run `kubectl apply -f k8s/`
